@@ -43,10 +43,11 @@ check out docker networking image files
 
 ## CNI in K8S
  - cni configuration is declared in ``kubelet.service``. check out the image files
-
-## Weave in K8S
  - ``ps aux | grep kubelet`` to get cni info
  - check ``/etc/cni/`` to find what cni cluster are using
+
+
+## Weave in K8S
  - just use below command to deploy "Weave" app (you can find this command in k8s document by searching "kubectl apply cloud.weave")
  ```
  kubectl apply -f "https://cloud.weave.works/k8s/net?k8s-version=$(kubectl version | base64 | tr -d '\n')"
@@ -54,3 +55,24 @@ check out docker networking image files
  
 ### IP Adderess managing in Weave
  - check ``/etc/cni/net.d/net-script.conf`` to configure 
+
+## Service Networking
+ - ``iptables -L -t net | grep $name`` to see iptable rules
+ - ``/var/log/kube-proxy.log`` to see log when creating entries
+ - check ``ip addr`` to get the range of ip address of nodes
+ - check CNI pod logs to get the range of ip address of pods(ex, Weave)
+ - check ``/etc/kubernetes/manifests/kube-apiserver.yaml`` to get the range of ip address of services
+ - check the type of proxy kube-proxy use by viewing the ``kube-proxy`` logs.
+ - check the image file
+
+## CoreDNS
+ - ``/etc/coredns/Corefile`` , ``coredns`` configmap
+- check the image file
+
+## Ingress
+ - check the image files to set up ingress and ingress controller
+ - add below annotation to metadata on ingress resource. make sure to use the ingress template with below annotation with
+ ```
+ annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+ ```
