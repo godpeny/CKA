@@ -1,4 +1,4 @@
-# MEMO 
+# EXAM 
 
 ## 1 / 12
 Deploy a pod named nginx-pod using the nginx:alpine image.
