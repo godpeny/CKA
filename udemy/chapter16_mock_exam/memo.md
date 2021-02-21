@@ -16,3 +16,15 @@ securityContext:
  - create role (with proper namespace)
  - create rolebinding (with proper namespace)
  - check with ``kubectl auth can-i list secrets --namespace dev --as dave``
+
+## ex3
+### Service Account Access
+ - create sa
+ - create cluster role
+ - create cluster role binding
+
+### jsonpath
+ - check cheetsheet
+
+### Network Policy
+ - ``kubectl get netpol``, ``kubectl describe netpol xx`` to check current network policy
