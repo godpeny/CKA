@@ -28,3 +28,7 @@ securityContext:
 
 ### Network Policy
  - ``kubectl get netpol``, ``kubectl describe netpol xx`` to check current network policy
+ - ``nc -z -v -w 2 $svc $port`` in busybox image container to check netpol is set properly.
+ ```
+ kc exec check -it -- nc -z -v -w 2 np-test-service 80 # check: busybox container pod with sleep command
+ ```
