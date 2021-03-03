@@ -22,6 +22,7 @@ securityContext:
  - create sa
  - create cluster role
  - create cluster role binding
+ - ``kubectl describe po`` and check pod's volume is set with secret token with proper name of service account
 
 ### jsonpath
  - check cheetsheet
